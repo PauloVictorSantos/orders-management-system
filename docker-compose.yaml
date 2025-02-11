@@ -1,0 +1,72 @@
+services:
+  srv_order:
+    image: order:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: order
+    ports:
+      - "8080:8080" # Porta para acessar a aplicação
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/order
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_KAFKA_PROPERTIES_MAX_REQUEST_SIZE: 125829120
+    depends_on:
+      - db
+      - kafka
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    ports:
+      - "5432:5432" # Porta do banco de dados
+    environment:
+      POSTGRES_DB: order
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_MESSAGE_MAX_BYTES: 125829120
+      KAFKA_REPLICA_FETCH_MAX_BYTES: 125829120
+      KAFKA_FETCH_MAX_BYTES: 125829120
+
+  akhq:
+    image: tchiotludo/akhq:latest
+    container_name: akhq
+    ports:
+      - "8081:8080"
+    depends_on:
+      - kafka
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            kafka:
+              properties:
+                bootstrap.servers: "kafka:9092"
+
+volumes:
+  postgres-data:
