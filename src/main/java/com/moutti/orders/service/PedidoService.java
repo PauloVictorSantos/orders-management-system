@@ -29,7 +29,7 @@ public class PedidoService {
 
         verificarDuplicidade(pedido);
         // Calcula o valor total
-        calcularValorTotalPed(pedido);
+        this.calcularValorTotalPed(pedido);
         // Processa o pedido por ID e envia para outro tópico
         processarPedido(pedido);
         // Vetifica itens do pedido
@@ -37,7 +37,7 @@ public class PedidoService {
 
     }
 
-    private static void calcularValorTotalPed(Pedido pedido) {
+    public void calcularValorTotalPed(Pedido pedido) {
         BigDecimal valorTotal = pedido.getItens().stream()
                 .map(item -> item.getProduto().getPrec().multiply(BigDecimal.valueOf(item.getQtd())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -51,7 +51,7 @@ public class PedidoService {
         producerPedido.sendMessage(TopicKafkaEnum.PEDIDO_PROCESSADO_TOPIC.getTopic(), pedido);
     }
 
-    private void verificarDuplicidade(Pedido pedido) {
+    public void verificarDuplicidade(Pedido pedido) {
         List<Pedido> pedidosExistentes = pedidoRepository.findAll();
         List<String> itensAtuais = formatarListPedido(pedido);
 
