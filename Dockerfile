@@ -15,9 +15,10 @@ WORKDIR /app
 
 # Copiar o arquivo JAR da aplicação do estágio de build
 COPY --from=build /app/target/orders-0.0.1-SNAPSHOT.jar orders.jar
-
+ARG JAR_FILE=/app/target/*.jar
+ENV JAVA_TOOL_OPTIONS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
 # Expor a porta em que a aplicação será executada
 EXPOSE 8080
 
 # Comando para iniciar a aplicação
-ENTRYPOINT ["java", "-jar", "srv_order.jar"]
+ENTRYPOINT ["java", "-jar", "orders.jar"]

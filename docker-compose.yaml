@@ -1,5 +1,5 @@
 services:
-  srv_order:
+  order:
     image: order:latest
     build:
       context: .
@@ -7,6 +7,7 @@ services:
     container_name: order
     ports:
       - "8080:8080" # Porta para acessar a aplicação
+      - "5005:5005"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/order
       SPRING_DATASOURCE_USERNAME: postgres

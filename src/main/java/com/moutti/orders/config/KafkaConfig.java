@@ -32,6 +32,7 @@ public class KafkaConfig {
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092"); // Servidor Kafka
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class); // Serialização da chave
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class); // Serialização do valor
+
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 
