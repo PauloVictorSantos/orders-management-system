@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/ad0f38c9-2997-4f81-adc3-fd2a0f538ee2)
+
+
 # Sistema de Gerenciamento de Pedidos
 
 ## Visão Geral
@@ -130,7 +133,7 @@ Se um pedido estiver sendo processado, ele será bloqueado até que o processame
 
 Também está definido que o consumidor deve ler desde o começo da partição, no entanto, por conta da verificação de duplicação, o sistema não processará pedidos duplicados.
 ```java
-props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // Busca mensagens desde o início caso não haja
+props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // Busca mensagens desde o início da partition
 ```
 
 ### Volumetria de pedidos
