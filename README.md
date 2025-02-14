@@ -1,9 +1,9 @@
-# Orders Management System
+# Sistema de Gerenciamento de Pedidos
 
-## Overview
-This project is an Orders Management System built with Java and Spring Boot. It provides RESTful APIs for managing orders, including creating, listing, and canceling orders. The system also integrates with Kafka for message processing.
+## Visão Geral
+Este projeto é um Sistema de Gerenciamento de Pedidos construído com Java e Spring Boot. Ele fornece APIs RESTful para gerenciar pedidos, incluindo a criação, listagem e cancelamento de pedidos. O sistema também integra com Kafka para processamento de mensagens.
 
-## Technologies Used
+## Tecnologias Utilizadas
 - Java
 - Spring Boot
 - Maven
@@ -11,40 +11,40 @@ This project is an Orders Management System built with Java and Spring Boot. It 
 - JUnit 5
 - Mockito
 
-## Project Structure
-- `src/main/java/com/moutti/orders/controller`: Contains the REST controllers.
-- `src/main/java/com/moutti/orders/service`: Contains the service layer.
-- `src/main/java/com/moutti/orders/repository`: Contains the repository interfaces.
-- `src/main/java/com/moutti/orders/model`: Contains the data models.
-- `src/main/java/com/moutti/orders/kafka`: Contains Kafka producer and consumer.
-- `src/main/java/com/moutti/orders/enums`: Contains the enums used in the project.
-- `src/test/java/com/moutti/orders`: Contains the unit tests.
+## Estrutura do Projeto
+- `src/main/java/com/moutti/orders/controller`: Contém os controladores REST.
+- `src/main/java/com/moutti/orders/service`: Contém a camada de serviço.
+- `src/main/java/com/moutti/orders/repository`: Contém as interfaces de repositório.
+- `src/main/java/com/moutti/orders/model`: Contém os modelos de dados.
+- `src/main/java/com/moutti/orders/kafka`: Contém o produtor e consumidor Kafka.
+- `src/main/java/com/moutti/orders/enums`: Contém os enums usados no projeto.
+- `src/test/java/com/moutti/orders`: Contém os testes unitários.
 
-## Getting Started
+## Começando
 
-### Prerequisites
-- Java 11 or higher
+### Pré-requisitos
+- Java 11 ou superior
 - Maven
 - Kafka
 
-### Installation
-1. Clone the repository:
+### Instalação
+1. Clone o repositório:
     ```sh
     git clone https://github.com/PauloVictorSantos/orders-management-system.git
     cd orders-management-system
     ```
 
-2. Build the project:
+2. Construa o projeto:
     ```sh
     mvn clean install
     ```
 
-3. Run the application:
+3. Execute a aplicação:
     ```sh
     mvn spring-boot:run
     ```
 
-### Running Tests
-To run the unit tests, use the following command:
+### Executando Testes
+Para executar os testes unitários, use o seguinte comando:
 ```sh
 mvn test
