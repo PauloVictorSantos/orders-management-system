@@ -20,6 +20,6 @@ public class OpenApiConfig {
                         .license(new License().name("Apache 2.0").url("https://springdoc.org")))
                 .externalDocs(new ExternalDocumentation()
                         .description("Documentação Completa")
-                        .url("https://example.com/docs"));
+                        .url("https://github.com/PauloVictorSantos/orders-management-system/blob/main/README.md"));
     }
 }
