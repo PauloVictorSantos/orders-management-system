@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/ad0f38c9-2997-4f81-adc3-fd2a0f538ee2)
+
+
 # Sistema de Gerenciamento de Pedidos
 
 ## Visão Geral
